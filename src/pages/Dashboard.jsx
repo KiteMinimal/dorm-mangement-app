@@ -50,17 +50,21 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-gray-100">
       <header className="bg-white shadow">
-        <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-3 sm:space-y-0">
+        {/* Mobile Nav (Logo + Hamburger) */}
+        <div className="flex items-center justify-between px-4 py-3 sm:hidden">
+          <img src="/logo.png" alt="ResidentLife Logo" className="h-8 w-auto" />
+          
+        </div>
+        {/* Desktop Nav (Dashboard title + profile) */}
+        <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 hidden sm:flex justify-between items-center">
           <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-          <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
-            <span>Campus: East Hall</span>
-            <div className="flex items-center">
-              <span className="mr-2">{currentUser?.name}</span>
-              <div className="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center text-white">
-                {currentUser?.name?.charAt(0) || "U"}
-              </div>
-            </div>
+          <div className="h-9 w-9 rounded-full bg-blue-500 flex items-center justify-center font-bold text-white">
+            {currentUser?.name?.charAt(0) || "U"}
           </div>
+        </div>
+
+        <div className="px-4 sm:px-6 lg:px-8 py-2">
+          <span className="text-sm text-gray-600">Campus: East Hall</span>
         </div>
       </header>
 

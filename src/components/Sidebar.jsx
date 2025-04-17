@@ -6,12 +6,13 @@ import {
   FaUserPlus,
   FaPlusCircle,
   FaTimes,
+  FaUserAlt,
 } from "react-icons/fa";
 import { useAuth } from "../hooks/useAuth";
 
 const Sidebar = ({ closeSidebar }) => {
   const location = useLocation();
-  const { logout } = useAuth();
+  const { logout, currentUser } = useAuth();
 
   const handleLogout = () => {
     logout();
@@ -24,17 +25,38 @@ const Sidebar = ({ closeSidebar }) => {
   return (
     <div className="h-screen w-64 bg-blue-800 text-white flex flex-col">
       <div className="p-4 border-b border-blue-700 flex justify-between items-center">
-        <h2 className="text-xl font-bold">ResidentLife</h2>
+        <Link
+          to="/dashboard"
+          className="flex items-center gap-2 text-white hover:opacity-80 overflow-hidden"
+          onClick={closeSidebar}
+        >
+          <img src="/logo.png" alt="residentLife" className="h-8 w-8 rounded-full shrink-0" />
+          <span className="text-lg font-bold truncate max-w-[130px] sm:max-w-full">ResidentLife</span>
+        </Link>
         <button
           className="md:hidden text-white hover:text-gray-300"
           onClick={closeSidebar}
         >
-          <FaTimes />
+          <FaTimes size={20} />
         </button>
       </div>
 
       <nav className="flex-1 overflow-y-auto py-4">
         <ul>
+          <li>
+            <Link
+              to="/profile"
+              className={`flex items-center px-4 py-3 ${
+                isActive("/profile")
+                  ? "bg-blue-900 text-white"
+                  : "text-blue-100 hover:bg-blue-700"
+              }`}
+              onClick={() => closeSidebar()}
+            >
+              <FaUserAlt className="mr-3" />
+              <span>Profile</span>
+            </Link>
+          </li>
           <li>
             <Link
               to="/dashboard"

@@ -20,6 +20,7 @@ import Rooms from "./pages/Rooms";
 import AddRoom from "./pages/AddRoom";
 import AddResident from "./pages/AddResident";
 import RoomDetails from "./pages/RoomDetails";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   useEffect(() => {
@@ -34,6 +35,8 @@ function App() {
           {/* Public Routes */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={<ProfilePage />} />
+
 
           {/* Protected Routes */}
           <Route
